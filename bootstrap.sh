@@ -64,8 +64,12 @@ echo "**************************************************"
 wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | apt-key add -
 echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | tee /etc/apt/sources.list.d/elastic-7.x.list
 apt-get update
-apt-get install elasticsearch
+apt-get install -y elasticsearch kibana
 /bin/systemctl daemon-reload
 /bin/systemctl enable elasticsearch.service
-systemctl start elasticsearch.service
+/bin/systemctl start elasticsearch.service
+/bin/systemctl enable kibana.service
+/bin/systemctl start kibana.service
+
+
 
