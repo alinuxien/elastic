@@ -7,7 +7,7 @@ Création d'une machine virtuelle Linux outillée pour faire de l'Infrastructure
 De [Virtual Box](https://www.virtualbox.org/) et de [Vagrant](https://www.vagrantup.com/downloads) installés sur la machine. 
 
 ## Installe :
-Terraform, Ansible et Docker, et la Suite Elastic, dans une VM base Ubuntu Bionic 64
+Terraform, Ansible et Docker, et la Suite Elastic ( Elastic Search et Kibana ), dans une VM base Ubuntu Bionic 64
 
 Autocomplétion pour terraform.
 
@@ -16,9 +16,9 @@ AWS CLI V2
 ## Usage
 Dans un terminal : 
 
-Clonez ce dépôt : `git clone https://github.com/alinuxien/terraform.git` 
+Clonez ce dépôt : `git clone https://github.com/alinuxien/elastic.git` 
 
-Allez dans le dossier terraform : `cd terraform`
+Allez dans le dossier terraform : `cd elastic`
 
 Editez les fichiers Vagrantfile et auto_cd.sh pour supprimer 1 ligne dans chacun ( instruction claire à l'intérieur )
 
