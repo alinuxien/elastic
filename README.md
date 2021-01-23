@@ -1,13 +1,13 @@
-# VM Infra as Code
+# VM Infra as Code & Stack Elastic
 
 ## Intêret
-Création d'une machine virtuelle Linux outillée pour faire de l'Infrastructure As Code.
+Création d'une machine virtuelle Linux outillée pour faire de l'Infrastructure As Code et équipée de la Stack Elastic ( ELK )
 
 ## J'ai besoin de quoi ?
 De [Virtual Box](https://www.virtualbox.org/) et de [Vagrant](https://www.vagrantup.com/downloads) installés sur la machine. 
 
 ## Installe :
-Terraform, Ansible et Docker dans une VM base Ubuntu Bionic 64
+Terraform, Ansible et Docker, et la Suite Elastic, dans une VM base Ubuntu Bionic 64
 
 Autocomplétion pour terraform.
 
