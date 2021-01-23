@@ -58,4 +58,14 @@ echo "*************************************************"
 apt-get install -y tree
 apt-get clean -y
 
+echo "**************************************************"
+echo "* [10]: INSTALLATION DE LA SUITE ELASTIC ( ELK ) *"
+echo "**************************************************"
+wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | apt-key add -
+echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | tee /etc/apt/sources.list.d/elastic-7.x.list
+apt-get update
+apt-get install elasticsearch
+/bin/systemctl daemon-reload
+/bin/systemctl enable elasticsearch.service
+systemctl start elasticsearch.service
 
