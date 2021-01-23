@@ -1,0 +1,5 @@
+.vagrant
+roles
+install-gitlab.yml
+inventaire.ini
+rootkey.csv
