@@ -67,9 +67,7 @@ apt-get update
 apt-get install -y elasticsearch kibana
 /bin/systemctl daemon-reload
 /bin/systemctl enable elasticsearch.service
-/bin/systemctl start elasticsearch.service
 /bin/systemctl enable kibana.service
-/bin/systemctl start kibana.service
 
 
 
