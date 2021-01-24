@@ -64,13 +64,13 @@ echo "**************************************************"
 wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | apt-key add -
 echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | tee /etc/apt/sources.list.d/elastic-7.x.list
 apt-get update
-apt-get install -y elasticsearch kibana
+apt-get install -y elasticsearch kibana filebeat
 sed -i 's/-Xms512m/-Xms4g/g' /etc/elasticsearch/jvm.options
 sed -i 's/-Xmx512m/-Xmx4g/g' /etc/elasticsearch/jvm.options
 sed -i 's/#server.host: "localhost"/server.host: "0.0.0.0"/g' /etc/kibana/kibana.yml
 /bin/systemctl daemon-reload
 /bin/systemctl enable elasticsearch.service
 /bin/systemctl enable kibana.service
-
+/bin/systemctl enable filebeat
 
 
