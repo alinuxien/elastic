@@ -71,6 +71,9 @@ sed -i 's/#server.host: "localhost"/server.host: "0.0.0.0"/g' /etc/kibana/kibana
 /bin/systemctl daemon-reload
 /bin/systemctl enable elasticsearch.service
 /bin/systemctl enable kibana.service
-/bin/systemctl enable filebeat
-
+/bin/systemctl enable filebeat/service
+filebeat modules enable elasticsearch
+sed -i 's/#username: "elastic"/username: "vagrant"/g' /etc/filebeat/filebeat.yml
+sed -i 's/#password: "changeme"/password: "vagrant"/g' /etc/filebeat/filebeat.yml
+filebeat setup
 

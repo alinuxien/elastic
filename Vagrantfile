@@ -21,7 +21,7 @@ Vagrant.configure("2") do |config|
     elastic.vm.provision "shell", run: "always", inline: <<-SHELL
       /bin/systemctl restart elasticsearch.service
       /bin/systemctl restart kibana.service
-      /bin/systemctl restart filebeat
+      /bin/systemctl restart filebeat.service
     SHELL
   end
 end
