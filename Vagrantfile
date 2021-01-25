@@ -2,7 +2,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "elastic" do |elastic|
     elastic.vm.box = "hashicorp/bionic64"
     elastic.vm.box_version = "1.0.282"
-    elastic.vm.hostname = "terraform"
+    elastic.vm.hostname = "elastic"
     elastic.vm.network "forwarded_port", guest: 22, host: 2222
     elastic.vm.network "forwarded_port", guest: 5601, host: 5601
 # LA LIGNE CI-DESSOUS DOIT ETRE SUPPRIMEE
@@ -22,6 +22,7 @@ Vagrant.configure("2") do |config|
       /bin/systemctl restart elasticsearch.service
       /bin/systemctl restart kibana.service
       /bin/systemctl restart filebeat.service
+      /bin/systemctl restart metricbeat.service
     SHELL
   end
 end
