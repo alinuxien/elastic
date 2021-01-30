@@ -68,6 +68,8 @@ apt-get install -y elasticsearch kibana filebeat metricbeat
 sed -i 's/-Xms512m/-Xms4g/g' /etc/elasticsearch/jvm.options
 sed -i 's/-Xmx512m/-Xmx4g/g' /etc/elasticsearch/jvm.options
 sed -i 's/#server.host: "localhost"/server.host: "0.0.0.0"/g' /etc/kibana/kibana.yml
+mkdir /etc/systemd/system/elasticsearch.service.d
+echo -e "[Service]\nTimeoutStartSec=180" | tee /etc/systemd/system/elasticsearch.service.d/startup-timeout.conf
 /bin/systemctl daemon-reload
 /bin/systemctl enable elasticsearch.service
 /bin/systemctl start elasticsearch.service
