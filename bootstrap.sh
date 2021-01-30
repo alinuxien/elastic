@@ -64,7 +64,7 @@ echo "**************************************************"
 wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | apt-key add -
 echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | tee /etc/apt/sources.list.d/elastic-7.x.list
 apt-get update
-apt-get install -y elasticsearch kibana filebeat metricbeat
+apt-get install -y elasticsearch kibana filebeat metricbeat logstash
 sed -i 's/-Xms512m/-Xms4g/g' /etc/elasticsearch/jvm.options
 sed -i 's/-Xmx512m/-Xmx4g/g' /etc/elasticsearch/jvm.options
 sed -i 's/#server.host: "localhost"/server.host: "0.0.0.0"/g' /etc/kibana/kibana.yml
@@ -77,13 +77,15 @@ echo -e "[Service]\nTimeoutStartSec=180" | tee /etc/systemd/system/elasticsearch
 /bin/systemctl start kibana.service
 /bin/systemctl enable filebeat.service
 filebeat modules enable elasticsearch
-sed -i 's/#username: "elastic"/username: "vagrant"/g' /etc/filebeat/filebeat.yml
-sed -i 's/#password: "changeme"/password: "vagrant"/g' /etc/filebeat/filebeat.yml
+# sed -i 's/#username: "elastic"/username: "vagrant"/g' /etc/filebeat/filebeat.yml
+# sed -i 's/#password: "changeme"/password: "vagrant"/g' /etc/filebeat/filebeat.yml
 filebeat setup
 /bin/systemctl start filebeat.service
 /bin/systemctl enable metricbeat.service
-sed -i 's/#username: "elastic"/username: "vagrant"/g' /etc/metricbeat/metricbeat.yml
-sed -i 's/#password: "changeme"/password: "vagrant"/g' /etc/metricbeat/metricbeat.yml
+# sed -i 's/#username: "elastic"/username: "vagrant"/g' /etc/metricbeat/metricbeat.yml
+# sed -i 's/#password: "changeme"/password: "vagrant"/g' /etc/metricbeat/metricbeat.yml
 /metricbeat setup
 /bin/systemctl start metricbeat.service
+/bin/systemctl enable logstash.service
+/bin/systemctl start logstash.service
 
