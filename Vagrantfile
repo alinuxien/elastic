@@ -18,12 +18,6 @@ Vagrant.configure("2") do |config|
     end
     elastic.vm.provision :shell, path: "bootstrap.sh"
     elastic.vm.provision :shell, path: "auto_cd.sh"
-    elastic.vm.provision "shell", run: "always", inline: <<-SHELL
-      /bin/systemctl restart elasticsearch.service
-      /bin/systemctl restart kibana.service
-      /bin/systemctl restart filebeat.service
-      /bin/systemctl restart metricbeat.service
-    SHELL
   end
 end
 
