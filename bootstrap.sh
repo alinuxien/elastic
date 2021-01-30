@@ -67,6 +67,8 @@ apt-get update
 apt-get install -y elasticsearch kibana filebeat metricbeat logstash
 sed -i 's/-Xms512m/-Xms4g/g' /etc/elasticsearch/jvm.options
 sed -i 's/-Xmx512m/-Xmx4g/g' /etc/elasticsearch/jvm.options
+sed -i 's/-Xms1g/-Xms4g/g' /etc/logstash/jvm.options
+sed -i 's/-Xmx1g/-Xmx4g/g' /etc/logstash/jvm.options
 sed -i 's/#server.host: "localhost"/server.host: "0.0.0.0"/g' /etc/kibana/kibana.yml
 mkdir /etc/systemd/system/elasticsearch.service.d
 echo -e "[Service]\nTimeoutStartSec=180" | tee /etc/systemd/system/elasticsearch.service.d/startup-timeout.conf
