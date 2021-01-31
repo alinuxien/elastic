@@ -1,0 +1,6 @@
+---
+- name: "Installation du Serveur de BDD Mysql"
+  hosts: localhost
+  roles:
+          - role: "mysql"
+

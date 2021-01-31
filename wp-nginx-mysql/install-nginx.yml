@@ -1,0 +1,7 @@
+---
+- name: "Installation du Serveur Web NGINX et compléments"
+  hosts: localhost
+  roles:
+          - role: "nginx"
+            php_install: yes
+

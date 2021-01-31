@@ -1,0 +1,6 @@
+---
+- name: "Installation de Wordpress"
+  hosts: localhost 
+  roles:
+          - role: "wordpress"
+
