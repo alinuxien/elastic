@@ -5,6 +5,7 @@ Vagrant.configure("2") do |config|
     elastic.vm.hostname = "elastic"
     elastic.vm.network "forwarded_port", guest: 22, host: 2222
     elastic.vm.network "forwarded_port", guest: 5601, host: 5601
+    elastic.vm.network "forwarded_port", guest: 80, host: 8080
 # LA LIGNE CI-DESSOUS DOIT ETRE SUPPRIMEE
     elastic.vm.synced_folder "../MlleC", "/home/vagrant/MlleC", type: "virtualbox"
 # LA LIGNE CI-DESSUS DOIT ETRE SUPPRIMEE
