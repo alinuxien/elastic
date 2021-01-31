@@ -71,21 +71,18 @@ sed -i 's/-Xms1g/-Xms4g/g' /etc/logstash/jvm.options
 sed -i 's/-Xmx1g/-Xmx4g/g' /etc/logstash/jvm.options
 sed -i 's/#server.host: "localhost"/server.host: "0.0.0.0"/g' /etc/kibana/kibana.yml
 mkdir /etc/systemd/system/elasticsearch.service.d
-echo -e "[Service]\nTimeoutStartSec=180" | tee /etc/systemd/system/elasticsearch.service.d/startup-timeout.conf
+echo -e "[Service]\nTimeoutStartSec=300" | tee /etc/systemd/system/elasticsearch.service.d/startup-timeout.conf
 /bin/systemctl daemon-reload
 /bin/systemctl enable elasticsearch.service
 /bin/systemctl start elasticsearch.service
 /bin/systemctl enable kibana.service
 /bin/systemctl start kibana.service
+sed -i 's/After=network-online.target/After=network-online.target kibana.service/g' /etc/systemd/system/multi-user.target.wants/filebeat.service
 /bin/systemctl enable filebeat.service
 filebeat modules enable elasticsearch
-# sed -i 's/#username: "elastic"/username: "vagrant"/g' /etc/filebeat/filebeat.yml
-# sed -i 's/#password: "changeme"/password: "vagrant"/g' /etc/filebeat/filebeat.yml
 filebeat setup
 /bin/systemctl start filebeat.service
 /bin/systemctl enable metricbeat.service
-# sed -i 's/#username: "elastic"/username: "vagrant"/g' /etc/metricbeat/metricbeat.yml
-# sed -i 's/#password: "changeme"/password: "vagrant"/g' /etc/metricbeat/metricbeat.yml
 /metricbeat setup
 /bin/systemctl start metricbeat.service
 /bin/systemctl enable logstash.service
