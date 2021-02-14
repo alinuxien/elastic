@@ -3,7 +3,6 @@ Vagrant.configure("2") do |config|
     elastic.vm.box = "hashicorp/bionic64"
     elastic.vm.box_version = "1.0.282"
     elastic.vm.hostname = "elastic"
-    elastic.vm.network "forwarded_port", guest: 22, host: 2222
     elastic.vm.network "forwarded_port", guest: 5601, host: 5601
     elastic.vm.network "forwarded_port", guest: 80, host: 8080
 # LA LIGNE CI-DESSOUS DOIT ETRE SUPPRIMEE
